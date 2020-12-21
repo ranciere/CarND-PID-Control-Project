@@ -4,6 +4,14 @@ Self-Driving Car Engineer Nanodegree Program
 ---
 ## Reflection
 
+### Effect of Parameters
+
+The proportional gain Kp is responsible for reaching the set point. Too much proportional gain leads to oscillations, too low gain leads to slow control process.
+
+The derivative gain Kd is responsible for avoiding overshooting and oscillations. The downside that it is amplifying noise of the error signal (eg. small changes in the error signal may cause big interfering).
+
+The integral gain Ki integrates error over time, so it is responsible for eliminating system bias.
+
 ### Implementation
 The original implementation of PID class has been refactored because the two update steps are unjustified: the `UpdateError` and the `TotalError` methods are merged into a single `update` method. This method gets the error and in one step it computes the output and sets the internal state (integral term and derivative term). The implementation is straightforward.
 
