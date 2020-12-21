@@ -37,7 +37,7 @@ int main()
 {
   uWS::Hub h;
 
-  PID pid_steering(0.125, 0.001, 0.5);
+  PID pid_steering(0.125, 3.94E-03, 1.0725);
   /**
    * TODO: Initialize the pid variable.
    */
@@ -72,7 +72,7 @@ int main()
            */
 
           // DEBUG
-          std::cout << "CTE: " << cte << " Steer value: " << steer_value << std::endl;
+          printf("CTE: % 1.3f => % 1.3f\n", cte, steer_value);
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;

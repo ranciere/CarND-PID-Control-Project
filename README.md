@@ -2,6 +2,21 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+## Reflection
+
+### Implementation
+The code has been refactored because the default implementation's two steps are unjustified: the `UpdateError` and the `TotalError` methods are merged to a single `update` method. The method gets the error and in one step it computes the output and sets the internal state (integral term and derivative term). The implementation is straightforward.
+
+### Tuning
+Based on [Implementing PID controllers](https://courses.cs.washington.edu/courses/csep567/10wi/lectures/Lecture9.pdf), I choose Heuristic Procedire #3 (Page 17). Steps:
+1. Set Kd and Ki to 0.0
+2. Increase Kp until oscillation:
+    * Kp = 0.26 &rarr; Kc = Kp = 0.26; Pc = 66 cycles
+3. Set **Kp** = 0.5*Kc = 0.5*0.26 = **0.13**
+4. Set **Kd** = Kp * Pc / 8 = 0.13 * 40 / 8 = **1.0725**
+5. Set **Ki** = 2*Kp / Pc = 2*0.13 / 66 = **3.94E-03**
+
+During the debugging it turned out that the integral term is prone to saturate in the begining of the running (until the car has not yet reached the cruising speed); so the `update` method limits the integral term (`pid.cpp`: 12-14 lines).
 
 ## Dependencies
 
