@@ -5,7 +5,7 @@ Self-Driving Car Engineer Nanodegree Program
 ## Reflection
 
 ### Implementation
-The code has been refactored because the default implementation's two steps are unjustified: the `UpdateError` and the `TotalError` methods are merged to a single `update` method. The method gets the error and in one step it computes the output and sets the internal state (integral term and derivative term). The implementation is straightforward.
+The original implementation of PID class has been refactored because the two update steps are unjustified: the `UpdateError` and the `TotalError` methods are merged into a single `update` method. This method gets the error and in one step it computes the output and sets the internal state (integral term and derivative term). The implementation is straightforward.
 
 ### Tuning
 Based on [Implementing PID controllers](https://courses.cs.washington.edu/courses/csep567/10wi/lectures/Lecture9.pdf), I choose Heuristic Procedire #3 (Page 17). Steps:
